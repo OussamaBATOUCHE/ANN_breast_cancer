@@ -3,7 +3,7 @@ import Data
 import Differential_Evolution
 from Differential_Evolution import Model
 import sys,datetime
-sys.stdout = open('TrainigsLog/train'+str(datetime.datetime.now().strftime("%Y%m%d%H%M"))+".log", 'w+')
+sys.stdout = open('TrainingsLog/train'+str(datetime.datetime.now().strftime("%Y%m%d%H%M"))+".log", 'w+')
 
 #--- PREPARE DATA ---------------------------------------------------------------------+
 dataset = Data.preprocessing("dataset/haberman.data","dataset/test_01.data",0.8)
