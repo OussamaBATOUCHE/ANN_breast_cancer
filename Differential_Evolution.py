@@ -126,28 +126,17 @@ def minimize(dataset, cost_func=Cost.score_loss_acc, bounds=[(1,5),(10,512),(21,
 
     #--- Select the best generation and best solution -----+
     # All generations best models and there scores
-    print(" ------------[ D.E MINIMIZER FINISHED ")
-    print("    > DETAILS ")
+    print(" ------------[ D.E MINIMIZER FINISHED ]------------ ")
+    print(" DETAILS ")
+    print(" -------- ")
     for k in range(len(all_gen_best)):
         print('       - [ ',all_gen_best_score[k],' : ',all_gen_best[k],' ]')
 
     # Selection the best of the best        
     best_gens_sol = all_gen_best[all_gen_best_score.index(min(all_gen_best_score))]
-    print("      > RESULT ")
-    print("-------------> The best model in all generations : ",best_gens_sol,'\n   -- SCORE : ',min(all_gen_best_score))
+    print("  RESULTS ")
+    print("  -------- ")
+    print("  - The best model in all generations : ",best_gens_sol,'\n   [SCORE : ',min(all_gen_best_score),' ]')
     return best_gens_sol
-
-#--- CONSTANTS ----------------------------------------------------------------+
-
-#cost_func = cost                                         # Cost function
-#bounds = [(1,5),(10,512),(21,301),(0.001,0.1)]            # Bounds [(nblayer_min, nblayer_max), (nbperc_min, nbperc_max),(epoch_min, epoch_max),(lr_min, lr_max)]
-#popsize = 10                                              # Population size, must be >= 4
-#mutate = 0.5                                              # Mutation factor [0,2]
-#recombination = 0.7                                       # Recombination rate [0,1]
-#maxiter = 20                                              # Max number of generations (maxiter)
-
-#--- RUN ----------------------------------------------------------------------+
-
-# main(cost_func, bounds, popsize, mutate, recombination, maxiter)
 
 #--- END ----------------------------------------------------------------------+
