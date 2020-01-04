@@ -126,10 +126,10 @@ def minimize(dataset, cost_func=Cost.score_loss_acc, bounds=[(1,5),(10,512),(21,
 
     #--- Select the best generation and best solution -----+
     # All generations best models and there scores
-        print(" ------------[ D.E MINIMIZER FINISHED ")
-        print("    > DETAILS ")
-        for k in range(len(all_gen_best)):
-            print('       - [ ',all_gen_best_score[k],' : ',all_gen_best[k],' ]')
+    print(" ------------[ D.E MINIMIZER FINISHED ")
+    print("    > DETAILS ")
+    for k in range(len(all_gen_best)):
+        print('       - [ ',all_gen_best_score[k],' : ',all_gen_best[k],' ]')
 
     # Selection the best of the best        
     best_gens_sol = all_gen_best[all_gen_best_score.index(min(all_gen_best_score))]
