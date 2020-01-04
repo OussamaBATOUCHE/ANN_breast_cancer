@@ -24,7 +24,7 @@ def shuffle_ds(input,target):
     for j in range(len(input)): # [j][a,c,d,e,1/0] => [a,c,d,e],[1/0]
         new_in.append([shfl_io[j][0],shfl_io[j][1],shfl_io[j][2]])
         new_tr.append(shfl_io[j][3])
-    
+    print('  --[DATA SHUFFLE]: Done!')
     return [new_in,new_tr]
         
 # print(shuffle_ds([[74,63,0],[75,62,1],[76,67,0],[77,65,3],[78,65,1],[83,58,2]],[1,0,0,1,0,1]))

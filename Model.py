@@ -2,6 +2,7 @@ import tensorflow as tf
 from tensorflow.keras import layers
 from tensorflow.keras.callbacks import TensorBoard
 import Cost
+import Data
 import datetime
 
 
@@ -28,13 +29,15 @@ def train(model_architecture,dataset):
     # Get data
     train_input, train_target, valid_input, valid_target, test_input, test_target = dataset
     # Shuffle 
-    
+    train_input, train_target = Data.shuffle_ds(train_input, train_target)
+    valid_input, valid_target = Data.shuffle_ds(valid_input, valid_target)
+
     # Create, compile, and train the model
     nb_layer = model_architecture[0]
     nb_perceptron = model_architecture[1]
     nb_epoch = model_architecture[2]
     l_rate = model_architecture[3]
-    logfilename = str(nb_layer)+"_"+str(nb_perceptron)+"_"+str(nb_epoch)+"_"+str(l_rate)[2:]+str(datetime.datetime.now().strftime("%H%M%S"))
+    logfilename = str(nb_layer)+"_"+str(nb_perceptron)+"_"+str(nb_epoch)+"_"+str(l_rate)[2:]+"_"+str(datetime.datetime.now().strftime("%H%M%S"))
 
     model = create(nb_layer,nb_perceptron,['relu','sigmoid'])
 
