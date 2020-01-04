@@ -1,3 +1,18 @@
+import random
+
+def shuffle(dataset):
+
+    shuffledDS = dataset[:]
+    for i in range(len(shuffledDS)):
+        j = int(random.randint(0,(len(shuffledDS)-1))) #select a random element
+        e = shuffledDS[i]
+        shuffledDS[i] = shuffledDS[j]
+        shuffledDS[j] = e
+
+    return shuffledDS
+
+# print(shuffle([[74,63,0],[75,62,1],[76,67,0],[77,65,3],[78,65,1],[83,58,2]]))
+
 def data_from_file(path):
 
     finalDataset = []
@@ -20,6 +35,7 @@ def data_from_file(path):
                     Survival = 1
             finalDataset.append([ages,year_of_operation,Nb_positive_axillary_nodes,Survival])
     print("[DATA_FROM_FILE]: Completed!")
+    
     return finalDataset
 
 def preprocessing(path_TrainData, path_TestData, train_perc=0.8):
