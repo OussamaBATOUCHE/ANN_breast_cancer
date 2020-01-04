@@ -25,9 +25,10 @@ def create( nb_layers, nb_percep, activationFunctions=["relu","sigmoid"]):
     return model
 
 def train(model_architecture,dataset):
-   # Get data
+    # Get data
     train_input, train_target, valid_input, valid_target, test_input, test_target = dataset
-
+    # Shuffle 
+    
     # Create, compile, and train the model
     nb_layer = model_architecture[0]
     nb_perceptron = model_architecture[1]
