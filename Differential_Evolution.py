@@ -32,7 +32,7 @@ def ensure_bounds(vec, bounds):
 
 #--- MAIN ---------------------------------------------------------------------+
 
-def main(dataset, cost_func=Cost.score_loss_acc, bounds=[(1,5),(10,512),(21,301),(0.001,0.1)], popsize=5, mutate=0.5, recombination=0.7, maxiter=20):
+def minimize(dataset, cost_func=Cost.score_loss_acc, bounds=[(1,5),(10,512),(21,301),(0.001,0.1)], popsize=5, mutate=0.5, recombination=0.7, maxiter=20):
 
     #--- INITIALIZE A POPULATION (step #1) ----------------+
     
@@ -115,12 +115,26 @@ def main(dataset, cost_func=Cost.score_loss_acc, bounds=[(1,5),(10,512),(21,301)
         print ('      > GENERATION AVERAGE:',gen_avg)
         print ('      > GENERATION BEST:',gen_best)
         print ('         > BEST SOLUTION:',gen_sol,'\n')
+
+        print("--------- DETIALS ++++++++++++++++++++ ")
+        print('> GENERATION ',i,' ALL SOLUTIONS [ SCORE : [MODEL] ]')
+        for s in range(len(gen_scores)):
+            print('[ ',gen_scores[s],' : ',population[s],' ]')
+        
         all_gen_best.append(gen_sol) #add the best soluction in this generation
         all_gen_best_score.append(gen_best) #add the best score in this generation
 
     #--- Select the best generation and best solution -----+
+    # All generations best models and there scores
+        print(" ------------[ D.E MINIMIZER FINISHED ")
+        print("    > DETAILS ")
+        for k in range(len(all_gen_best)):
+            print('       - [ ',all_gen_best_score[k],' : ',all_gen_best[k],' ]')
+
+    # Selection the best of the best        
     best_gens_sol = all_gen_best[all_gen_best_score.index(min(all_gen_best_score))]
-    print("The best model in all generations : ",best_gens_sol,'\n   -- SCORE : ',min(all_gen_best_score))
+    print("      > RESULT ")
+    print("-------------> The best model in all generations : ",best_gens_sol,'\n   -- SCORE : ',min(all_gen_best_score))
     return best_gens_sol
 
 #--- CONSTANTS ----------------------------------------------------------------+

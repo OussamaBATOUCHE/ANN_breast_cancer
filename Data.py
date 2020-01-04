@@ -1,3 +1,34 @@
+import random
+
+def shuffle(dataset):
+
+    shuffledDS = dataset[:]
+    for i in range(len(shuffledDS)):
+        j = int(random.randint(0,(len(shuffledDS)-1))) #select a random element
+        e = shuffledDS[i]
+        shuffledDS[i] = shuffledDS[j]
+        shuffledDS[j] = e
+
+    return shuffledDS
+
+# print(shuffle([[74,63,0],[75,62,1],[76,67,0],[77,65,3],[78,65,1],[83,58,2]]))
+
+def shuffle_ds(input,target):
+
+    in_ds = input[:]
+    for i in range(len(in_ds)):
+        in_ds[i].append(target[i]) # [i][a,c,d,e].append(1/0) => [a,c,d,e,1/0]
+    shfl_io = shuffle(in_ds)                 # [i+-n][a,c,d,e,1/0]
+    new_in = []
+    new_tr = []
+    for j in range(len(input)): # [j][a,c,d,e,1/0] => [a,c,d,e],[1/0]
+        new_in.append([shfl_io[j][0],shfl_io[j][1],shfl_io[j][2]])
+        new_tr.append(shfl_io[j][3])
+    print('  --[DATA SHUFFLE]: Done!')
+    return [new_in,new_tr]
+        
+# print(shuffle_ds([[74,63,0],[75,62,1],[76,67,0],[77,65,3],[78,65,1],[83,58,2]],[1,0,0,1,0,1]))
+
 def data_from_file(path):
 
     finalDataset = []
@@ -20,6 +51,7 @@ def data_from_file(path):
                     Survival = 1
             finalDataset.append([ages,year_of_operation,Nb_positive_axillary_nodes,Survival])
     print("[DATA_FROM_FILE]: Completed!")
+    
     return finalDataset
 
 def preprocessing(path_TrainData, path_TestData, train_perc=0.8):

@@ -9,7 +9,8 @@ sys.stdout = open('TrainingsLog/train'+str(datetime.datetime.now().strftime("%Y%
 dataset = Data.preprocessing("dataset/haberman.data","dataset/test_01.data",0.8)
 
 #--- META-HEURISTIQUE -----------------------------------------------------------------+
-best_model = Differential_Evolution.main(dataset=dataset, popsize=5,maxiter=2)
+best_model = Differential_Evolution.minimize(dataset=dataset, popsize=5,maxiter=2)
 
 #--- TRAIN & SAVE THE BEST MODEL ------------------------------------------------------+
 Model.retrain_and_save(best_model,dataset,50)
+# Model.retrain_and_save([2,100,100,0.001],dataset,10)
