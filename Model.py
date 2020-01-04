@@ -72,16 +72,18 @@ def retrain(model, dataset, iterations):
     return best_score
 
 def retrain_and_save(model, dataset, iterations):  
+    print(" ------------ > THE BEST MODEL RETRAINS START HERE ")
     best_accuracy = 0
     score = 2
     for i in range(iterations):
         metrics_and_model = train(model,dataset)
         score_i = round(((1-metrics_and_model[1])+metrics_and_model[0]),2)
-        print("--------------- END TRAIN with BIN-ACCURACY : ",metrics_and_model[1]," ----  LOSS : ",metrics_and_model[0]," ------ SCORE : ",score_i)
+        print("--------------- END TRAIN [",i,"/,",iterations,"] ")
+        print("---------------     > With BIN-ACCURACY : ",metrics_and_model[1]," ----  LOSS : ",metrics_and_model[0]," ------ SCORE : ",score_i)
         if score_i < score:
             score = score_i
             best_accuracy = metrics_and_model[1]
             metrics_and_model[2].save("best_model.h5")
-    print("++++++++++++  BEST MODEL SAVED ! With Binary Accuracy",best_accuracy," and score ",score)
+    print(" ------------ >  BEST MODEL SAVED ! With Binary Accuracy",best_accuracy," and Score ",score)
 
 
